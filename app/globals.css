@@ -3,27 +3,57 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 242, 241, 230;
+  --background-rgb: 242, 241, 230;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+.loading {
+  font-size: 100px;
+  line-height: 80px;
+  font-weight: 600;
+  color: #de466c;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: Loading 1s linear 2s forwards,
+    LoadingFinal 0.3s linear 2.7s forwards;
+}
+
+.mask {
+  mask-image: url("/furmi.svg");
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  animation: Loading 2s linear 2s forwards;
+}
+
+@keyframes LoadingFinal {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes Loading {
+  0% {
+    mask-size: 100%;
+  }
+  100% {
+    mask-size: 10000%;
+  }
 }
 
 @layer utilities {
