@@ -2,9 +2,15 @@
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { useAnimation, motion, useInView } from "framer-motion";
 
 export default function Home() {
+  const ref = useRef(null);
+  const ref1 = useRef(null);
+  const isInView = useInView(ref);
+  const isInView1 = useInView(ref1);
+
   return (
     <main className="w-full flex flex-col">
       <Navbar location={0} />
@@ -34,9 +40,17 @@ export default function Home() {
 
       <section
         id="collections"
-        className="flex flex-col w-full px-4 md:px-16 pt-28 gap-16 py-10"
+        className="flex overflow-hidden flex-col w-full px-4 md:px-16 pt-28 gap-16 py-10"
       >
-        <div className="flex justify-between flex-col md:flex-row md:items-end gap-4 w-full">
+        <div
+          ref={ref1}
+          style={{
+            transform: isInView1 ? "none" : "translateY(-200px)",
+            opacity: isInView1 ? 1 : 0,
+            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+          }}
+          className="flex justify-between flex-col md:flex-row md:items-end gap-4 w-full"
+        >
           <div className="flex text-[clamp(28px,4vw,42px)] font-bold flex-col text-shade-black">
             <div className="leading-10">Discover Unparalleled</div>
             <div>Furniture Designs</div>
@@ -117,7 +131,7 @@ export default function Home() {
       </section>
 
       <section id="about" className="p-4 md:p-20">
-        <div className="relative shadow">
+        <div className="relative shadow overflow-hidden">
           <Image
             height={0}
             width={0}
@@ -126,7 +140,15 @@ export default function Home() {
             src={"/Home/ImageLower.png"}
             alt="Lower Image"
           />
-          <div className="absolute top-2 md:bottom-16 max-w-[500px] w-[calc(100%-1rem)] shadow-lg left-2 md:left-16 rounded-xl p-6 flex flex-col gap-4 bg-shade-black text-white">
+          <motion.div
+            ref={ref}
+            style={{
+              transform: isInView ? "none" : "translateX(-200px)",
+              opacity: isInView ? 1 : 0,
+              transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+            }}
+            className="absolute top-2 md:bottom-16 md:top-auto max-w-[500px] w-[calc(100%-1rem)] h-fit shadow-lg left-2 md:left-16 rounded-xl p-6 flex flex-col gap-4 bg-shade-black text-white"
+          >
             <div className="font-bold text-lg">About Furni</div>
             <div className="text-sm">
               We believe that furniture should be more than just functional; it
@@ -137,7 +159,7 @@ export default function Home() {
             <div className="rounded-full font-semibold w-fit text-sm bg-cream text-shade-black py-1 px-2 cursor-pointer">
               Contact Us
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>
