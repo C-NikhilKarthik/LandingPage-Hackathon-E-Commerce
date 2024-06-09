@@ -27,13 +27,15 @@ export default function Navbar({ location }: LocationProps) {
         }`}
       >
         <div className="flex gap-4 items-center">
-          <div className="font-bold text-2xl">furni</div>
+          <Link className="font-bold text-2xl" href={"/"}>
+            furni
+          </Link>
           <div className="md:flex hidden gap-6">
             <Link
               className={`flex flex-col after:block after:w-0 after:h-[2px] after:rounded hover:after:w-full after:transition-[width] after:duration-500 ${
                 location === 0 ? "after:bg-cream" : "after:bg-black"
               }`}
-              href={"#collections"}
+              href={"/product-list"}
             >
               Collections
             </Link>
@@ -41,7 +43,7 @@ export default function Navbar({ location }: LocationProps) {
               className={`flex flex-col after:block after:w-0 after:h-[2px] after:rounded hover:after:w-full after:transition-[width] after:duration-500 ${
                 location === 0 ? "after:bg-cream" : "after:bg-black"
               }`}
-              href={"/"}
+              href={"#clearance"}
             >
               Clearance
             </Link>
@@ -59,12 +61,12 @@ export default function Navbar({ location }: LocationProps) {
         <div className="md:flex gap-4 hidden items-center">
           <PiShoppingCartDuotone
             className={`text-xl ${
-              location !== 0 ? "bg-shade-black" : "text-cream"
+              location !== 0 ? "text-shade-black" : "text-cream"
             }`}
           />
           <div
             className={`text-sm ${
-              location !== 0 ? "bg-shade-black" : "text-cream"
+              location !== 0 ? "text-shade-black" : "text-cream"
             }`}
           >
             EN
@@ -82,7 +84,9 @@ export default function Navbar({ location }: LocationProps) {
 
         <button
           onClick={() => setOpen(!open)}
-          className="flex md:hidden items-center p-1 text-white"
+          className={`flex md:hidden items-center p-1 ${
+            location === 0 ? "text-cream" : "text-shade-black"
+          }`}
         >
           <GiHamburgerMenu className="text-xl" />
         </button>
@@ -94,7 +98,15 @@ export default function Navbar({ location }: LocationProps) {
         }`}
       >
         <div className="flex w-full justify-between">
-          <div className="font-bold text-2xl">furni</div>
+          <Link
+            className={`font-bold text-2xl ${
+              location === 0 ? "after:bg-cream" : "after:bg-black"
+            }`}
+            href={"/"}
+            onClick={() => setOpen(!open)}
+          >
+            furni
+          </Link>
           <button
             onClick={() => setOpen(!open)}
             className="flex md:hidden items-center p-1 text-white"
@@ -107,7 +119,7 @@ export default function Navbar({ location }: LocationProps) {
             className={`flex flex-col after:block after:w-0 after:h-[2px] after:rounded hover:after:w-full after:transition-[width] after:duration-500 ${
               location === 0 ? "after:bg-cream" : "after:bg-black"
             }`}
-            href={"#collections"}
+            href={"/product-list"}
             onClick={() => setOpen(!open)}
           >
             Collections
@@ -116,7 +128,7 @@ export default function Navbar({ location }: LocationProps) {
             className={`flex flex-col after:block after:w-0 after:h-[2px] after:rounded hover:after:w-full after:transition-[width] after:duration-500 ${
               location === 0 ? "after:bg-cream" : "after:bg-black"
             }`}
-            href={"/"}
+            href={"#clearance"}
             onClick={() => setOpen(!open)}
           >
             Clearance

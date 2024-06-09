@@ -4,12 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useAnimation, motion, useInView } from "framer-motion";
+import { Products } from "@/data/Products";
+import ProductCards from "@/components/ProductCards";
 
 export default function Home() {
   const ref = useRef(null);
   const ref1 = useRef(null);
-  const isInView = useInView(ref);
-  const isInView1 = useInView(ref1);
+  const isInView = useInView(ref, { once: true });
+  const isInView1 = useInView(ref1, { once: true });
 
   return (
     <main className="w-full flex flex-col">
@@ -56,77 +58,26 @@ export default function Home() {
             <div>Furniture Designs</div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-3 h-fit">
-            <div className="rounded-full px-2 py-1 bg-shade-black text-cream font-semibold">
+          <div className="flex flex-col md:flex-row md:flex-wrap gap-3 h-fit">
+            <div className="rounded-full px-4 py-3 bg-shade-black text-cream font-semibold">
               All Products
             </div>
-            <div className="rounded-full px-2 py-1 text-shade-black border-shade-black border cursor-pointer font-semibold">
+            <div className="rounded-full px-4 py-3 text-shade-black border-shade-black border-2 cursor-pointer font-semibold">
               Living Rooms
             </div>
-            <div className="rounded-full px-2 py-1 text-shade-black border-shade-black border cursor-pointer font-semibold">
+            <div className="rounded-full px-4 py-3 text-shade-black border-shade-black border-2 cursor-pointer font-semibold">
               Bedroom
             </div>
-            <div className="rounded-full px-2 py-1 text-shade-black border-shade-black border cursor-pointer font-semibold">
+            <div className="rounded-full px-4 py-3 text-shade-black border-shade-black border-2 cursor-pointer font-semibold">
               Outdoor
             </div>
           </div>
         </div>
 
-        <div className="gap-4 flex w-full px-0 md:px-4 lg:px-10 xl:px-16">
-          <div className="basis-1/3 flex flex-col gap-2">
-            <Image
-              src={"/Home/Image1.png"}
-              height={0}
-              width={0}
-              sizes="100%"
-              className="aspect-square rounded-lg w-full"
-              alt="Image "
-            />
-            <div className="flex flex-col">
-              <div className="font-bold text-shade-black">
-                Classic Comfort Chair
-              </div>
-              <div className="text-burnt-orange text-sm font-semibold">
-                ₹4,499
-              </div>
-            </div>
-          </div>
-          <div className="basis-1/3 flex flex-col gap-2">
-            <Image
-              src={"/Home/Image1.png"}
-              height={0}
-              width={0}
-              sizes="100%"
-              className="aspect-square rounded-lg w-full"
-              alt="Image "
-            />
-            <div className="flex flex-col">
-              <div className="font-bold text-shade-black">
-                Classic Comfort Chair
-              </div>
-              <div className="text-burnt-orange text-sm font-semibold">
-                ₹4,499
-              </div>
-            </div>
-          </div>
-          <div className="basis-1/3 flex flex-col gap-2">
-            <Image
-              src={"/Home/Image1.png"}
-              height={0}
-              width={0}
-              sizes="100%"
-              className="aspect-square rounded-lg w-full"
-              alt="Image "
-            />
-            <div className="flex flex-col">
-              <div className="font-bold text-shade-black">
-                Classic Comfort Chair
-              </div>
-              <div className="text-burnt-orange text-sm font-semibold">
-                ₹4,499
-              </div>
-            </div>
-          </div>
+        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 w-full px-0 md:px-4 lg:px-10 xl:px-16">
+          {Products?.slice(0, 3)?.map((item, index) => (
+            <ProductCards key={index} item={item} />
+          ))}
         </div>
       </section>
 
