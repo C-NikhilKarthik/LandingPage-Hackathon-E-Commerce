@@ -20,7 +20,8 @@ export default function ProductCards({ item }: Product) {
         )}
         {item?.available === false && (
           <div className="absolute top-1/2 z-[10] whitespace-nowrap text-sm font-semibold bg-burnt-orange py-1 -translate-y-1/2 text-cream">
-            Out of Stock • Out of Stock • Out of Stock
+            Out of Stock • Out of Stock • Out of Stock • Out of Stock • Out of
+            Stock • Out of Stock • Out of Stock
           </div>
         )}
       </div>
