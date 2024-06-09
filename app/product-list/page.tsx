@@ -21,7 +21,7 @@ export default function ProductsPage() {
       <Navbar location={1} />
       <section className="px-4 md:px-10 lg:px-16 pt-24 pb-8">
         <div className="bg-[url('/ProductPage/ProductImage.png')] border border-shade-black relative w-full bg-cover h-[40vh] bg-center rounded-lg">
-          <div className="absolute bottom-4 right-4 bg-shade-black/30 backdrop-blur rounded p-2 text-[clamp(30px,3vw,72px)] font-semibold">
+          <div className="absolute bottom-4 right-4 bg-cream/30 backdrop-blur rounded p-2 text-[clamp(30px,3vw,72px)] font-semibold">
             All Furni Chairs
           </div>
         </div>

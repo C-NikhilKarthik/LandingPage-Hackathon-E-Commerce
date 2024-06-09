@@ -74,20 +74,20 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 w-full px-0 md:px-4 lg:px-10 xl:px-16">
+        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 w-full">
           {Products?.slice(0, 3)?.map((item, index) => (
             <ProductCards key={index} item={item} />
           ))}
         </div>
       </section>
 
-      <section id="about" className="p-4 md:p-20">
-        <div className="relative shadow overflow-hidden">
+      <section id="about" className="p-4 md:p-16">
+        <div className="relative shadow overflow-hidden rounded-xl">
           <Image
             height={0}
             width={0}
             sizes="100%"
-            className="w-full h-[70vh] object-cover object-center rounded-xl"
+            className="w-full h-[70vh] object-cover object-center"
             src={"/Home/ImageLower.png"}
             alt="Lower Image"
           />
